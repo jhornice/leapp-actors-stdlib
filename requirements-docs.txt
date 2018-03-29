@@ -1,5 +1,5 @@
 -r requirements.txt
 
-sphinx
+sphinx>=1.5,<1.6
 sphinx_rtd_theme
-recommonmark
+git+https://github.com/rtfd/recommonmark.git

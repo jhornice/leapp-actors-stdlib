@@ -24,7 +24,8 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirna
 
 import sphinx_rtd_theme
 import leapp
-
+from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -43,7 +44,7 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-source_suffix = ['.rst', '.md']
+source_suffix = ['.md', '.rst']
 # source_suffix = '.rst'
 
 # The master toctree document.
@@ -163,7 +164,7 @@ texinfo_documents = [
 
 
 source_parsers = {
-   '.md': 'recommonmark.parser.CommonMarkParser',
+   '.md': CommonMarkParser,
 }
 
 autoclass_content = 'both'
@@ -182,6 +183,10 @@ def filter_unwanted_leapp_types(app, what, name, obj, skip, options):
 
 
 def setup(app):
+    app.add_config_value('recommonmark_config', {
+        'enable_auto_doc_ref': False,
+    }, True)
+    app.add_transform(AutoStructify)
     with open('/tmp/sphinx-out', 'w') as f:
         f.write('')
     app.connect('autodoc-skip-member', filter_unwanted_leapp_types)

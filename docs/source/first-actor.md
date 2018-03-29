@@ -21,7 +21,7 @@ topic.
 
 ### Tags
 Tags are used by the framework to be able to query the repository for actors that should be
-executed together in a [phase of a workflow](workflows.md). This starts being interesting
+executed together in a [phase of a workflow](workflows). This starts being interesting
 when you want to have your actor being included into a workflow in a phase. For keeping
 the tutorial a bit more simple about how to write and test the actor we skip this topic.
 
@@ -34,7 +34,7 @@ Tags are defined there as well for the reasons as outlined above.
 ## Getting started
 
 First go to your project directory. If you did not yet create a project please check the
-steps [in the create project tutorial](create-project.md)
+steps [in the create project tutorial](create-project)
 
 We're considering that this is an empty project.
 
