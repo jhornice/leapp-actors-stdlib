@@ -1,10 +1,10 @@
-Contributing to LeApp
+Contributing to Leapp
 =====================
 
 First off, thanks for taking the time to contribute!
 
-The following is a set of guidelines for contributing effectively to LeApp,
-which is hosted in the `LeApp-To Organization <https://github.com/leapp-to/>`_ on Github.
+The following is a set of guidelines for contributing effectively to Leapp,
+which is hosted in the `Leapp-To Organization <https://github.com/leapp-to/>` on Github.
 These guidelines are expected to change over time as the needs of the project
 evolve, so feel free to propose changes to this document in a pull request -
 it's a lot easier to discuss a specific proposed update than it is general
@@ -14,7 +14,7 @@ Submitting Issues
 ^^^^^^^^^^^^^^^^^
 
 * All elements of the current version (documentation, CLI, demonstration Cockpit plugin, 
-  integration tests) are maintained in the `leapp repo <https://github.com/leapp-to/leapp>`_, 
+  integration tests) are maintained in the `leapp repo <https://github.com/leapp-to/leapp>`, 
   so any issues should be filed there regardless of the component they relate to
 
 Submitting a Pull Request
@@ -24,11 +24,10 @@ Submitting a Pull Request
 
 Core Reviewers are:
 
+* Fabio Bertinatto
 * Marcel Gazdik
 * Marcin Franczyk
-* Nick Coghlan
 * Pavel Odvody
-* Veaceslav Mindru
 * Vinzenz Feenstra
 
 Before you submit your pull request consider the following guidelines:
