@@ -1,6 +1,6 @@
 -r requirements.txt
 
-CommonMark==0.5.4
+CommonMark==0.7.5
 sphinx>=1.5,<1.6
 sphinx_rtd_theme
-git+https://github.com/rtfd/recommonmark.git
+git+https://github.com/rtfd/recommonmark.git@master
