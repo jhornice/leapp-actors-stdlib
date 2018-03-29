@@ -25,7 +25,7 @@ class BaseMessaging(object):
             return self._data + self._new_data
         lookup = {model.__name__: model for model in types}
         return (lookup[message['type']].create(json.loads(message['message']['data']))
-                for message in (self._data + self._data) if message['type'] in lookup)
+                for message in (self._data + self._new_data) if message['type'] in lookup)
 
 
 class RemoteMessaging(BaseMessaging):
