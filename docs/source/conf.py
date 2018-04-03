@@ -191,4 +191,5 @@ def setup(app):
         f.write('')
     app.connect('autodoc-skip-member', filter_unwanted_leapp_types)
     app.add_stylesheet('css/asciinema-player.css')
+    app.add_stylesheet('css/custom.css')
     app.add_javascript('js/asciinema-player.js')
