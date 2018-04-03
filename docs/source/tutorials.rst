@@ -6,3 +6,4 @@ Leapp tutorials
 
     create-project
     first-actor
+    messaging
