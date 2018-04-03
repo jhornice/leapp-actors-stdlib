@@ -9,6 +9,7 @@ Welcome to Leapp's documentation!
 
     terminology
     tutorials
+    best-practises
     contributing
     modules
 

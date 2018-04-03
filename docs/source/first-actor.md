@@ -21,9 +21,10 @@ topic.
 
 ### Tags
 Tags are used by the framework to be able to query the repository for actors that should be
-executed together in a [phase of a workflow](workflows). This starts being interesting
-when you want to have your actor being included into a workflow in a phase. For keeping
-the tutorial a bit more simple about how to write and test the actor we skip this topic.
+executed together in a [phase of a workflow](terminlogy.html#phase). This starts being
+interesting when you want to have your actor being included into a
+[workflow](terminology.html#workflow) in a phase. For keeping the tutorial a bit more simple
+about how to write and test the actor we skip this topic.
 
 ### Actors
 Actors define what messages they want to consume and what they produce by importing the
