@@ -52,7 +52,8 @@ necessary code is already defined and it creates the class *ScanTag* which we wi
 later on.
 
 #### Screencast
-![Create Tag Tutorial Cast](_static/screencasts/create-tag.gif)
+
+<asciinema-player src="_static/screencasts/create-tag.json"></ascinema-player>
 
 ### Creating a topic
 
@@ -66,7 +67,8 @@ This time the folder topics has been created with a systeminfo.py file that prov
 the complete code and definition for the *SystemInfoTopic* class we will use in the model.
 
 #### Screencast
-![Create Topic Tutorial Cast](_static/screencasts/create-topic.gif)
+
+<asciinema-player src="_static/screencasts/create-topic.json"></ascinema-player>
 
 ### Creating a model
 
@@ -119,7 +121,8 @@ class Hostname(Model):
 Now we can save the file a go write an actor using the other parts.
 
 #### Screencast
-![Create Model Tutorial Cast](_static/screencasts/create-model.gif)
+
+<asciinema-player src="_static/screencasts/create-model.json"></ascinema-player>
 
 
 ### Creating an actor
@@ -232,4 +235,6 @@ If you want to see the message it generated use the --print-output flag
 ```
 
 #### Screencast
-![Create Actor Tutorial Cast](_static/screencasts/create-actor.gif)
+
+<asciinema-player src="_static/screencasts/create-actor.json"></ascinema-player>
+

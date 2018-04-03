@@ -190,3 +190,5 @@ def setup(app):
     with open('/tmp/sphinx-out', 'w') as f:
         f.write('')
     app.connect('autodoc-skip-member', filter_unwanted_leapp_types)
+    app.add_stylesheet('css/asciinema-player.css')
+    app.add_javascript('js/asciinema-player.js')
