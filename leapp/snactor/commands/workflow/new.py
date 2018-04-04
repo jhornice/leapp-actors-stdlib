@@ -1,5 +1,5 @@
 import os
-
+import sys
 
 from leapp.snactor.commands.workflow import workflow
 from leapp.utils.clicmd import command_arg, command_opt
@@ -27,8 +27,13 @@ def cli(args):
     workflow_path = os.path.join(workflows_dir, make_name(name) + '.py')
     if not os.path.exists(workflow_path):
         with open(workflow_path, 'w') as f:
-            f.write("""from leapp.workflows import Workflow, Phase, Flags, Filter, Policies
-from leapp.tags import FactsTag, {workflow_class}Tag, CommonFactsTag, ChecksTag, CommonChecksTag
+            f.write("""from leapp.workflows import Workflow
+from leapp.workflows.phases import Phase
+from leapp.workflows.flags import Flags
+from leapp.workflows.filters import Filter
+from leapp.workflows.tagfilters import TagFilter
+from leapp.workflows.policies import Policies
+from leapp.tags import FactsTag, {workflow_class}Tag, ChecksTag
 
 
 class {workflow_class}Workflow(Workflow):
@@ -39,21 +44,17 @@ class {workflow_class}Workflow(Workflow):
 
     class FactsCollection(Phase):
         name = 'Facts collection'
-        filter = Filter(
-            tags=(({workflow_class}Tag, FactsTag),
-                  (CommonFactsTag,)))
-        policies = Policies(
-            error=Policies.Errors.FailPhase,
-            retry=Policies.Retry.Phase)
+        filter = TagFilter(FactsTag)
+        policies = Policies(Policies.Errors.FailPhase,
+                            Policies.Retry.Phase)
         flags = Flags()
 
     class Checks(Phase):
         name = 'Checks'
-        filter = Filter(
-            tags=(({workflow_class}Tag, ChecksTag),
-                   (CommonChecksTag,)))
-        policies = Policies(
-            error=Policies.Errors.FailPhase,
-            retry=Policies.Retry.Phase)
+        filter = TagFilter(ChecksTag)
+        policies = Policies(Policies.Errors.FailPhase,
+                            Policies.Retry.Phase)
         flags = Flags()
 """.format(workflow_name=name, workflow_class=class_name, workflow_short_name=short_name))
+    sys.stdout.write("New workflow {} has been created in {}\n".format(class_name,
+                                                                       os.path.realpath(workflow_path)))
