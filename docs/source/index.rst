@@ -11,6 +11,7 @@ Welcome to Leapp's documentation!
     tutorials
     best-practises
     contributing
+    python-coding-guidelines
     modules
 
 
