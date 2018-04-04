@@ -15,8 +15,9 @@
             private.py              # Can be modules
             actorpkg/               # or packages
                 __init__.py
-        tools/                      # The path of this directory gets injected in the actors PATH environment
-                                    # variable before execution these tools are private to the actor
+        tools/                      # The path of this directory gets injected in the actors PATH
+                                    # environment variable before execution these tools are private to
+                                    # the actor
 
         files/                      # Files that are private to the actor only
 
