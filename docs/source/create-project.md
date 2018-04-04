@@ -1,6 +1,6 @@
 # Creating a new project for actor development
 
-Leapp uses repositories with a defined [filesystem layout](filesystem-layout.md)
+Leapp uses repositories with a defined [filesystem layout](best-practises.html#repository-directory-layout)
 The snactor tool helps you to create a project repository in which you can develop and test your
 actors, tags, models and topics.
 
