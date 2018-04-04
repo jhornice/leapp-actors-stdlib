@@ -33,7 +33,7 @@ from leapp.workflows.flags import Flags
 from leapp.workflows.filters import Filter
 from leapp.workflows.tagfilters import TagFilter
 from leapp.workflows.policies import Policies
-from leapp.tags import FactsTag, {workflow_class}Tag, ChecksTag
+from leapp.tags import {workflow_class}Tag
 
 
 class {workflow_class}Workflow(Workflow):
@@ -42,19 +42,15 @@ class {workflow_class}Workflow(Workflow):
     short_name = '{workflow_short_name}'
     description = '''No description has been provided for the {workflow_name} workflow.'''
 
-    class FactsCollection(Phase):
-        name = 'Facts collection'
-        filter = TagFilter(FactsTag)
-        policies = Policies(Policies.Errors.FailPhase,
-                            Policies.Retry.Phase)
-        flags = Flags()
-
-    class Checks(Phase):
-        name = 'Checks'
-        filter = TagFilter(ChecksTag)
-        policies = Policies(Policies.Errors.FailPhase,
-                            Policies.Retry.Phase)
-        flags = Flags()
+    # Template for phase definition - The order in which the phase classes are defined
+    # within the Workflow class represents the execution order
+    #
+    # class PhaseName(Phase):
+    #    name = 'phase_name'
+    #    filter = TagFilter(PhaseTag)
+    #    policies = Policies(Policies.Errors.FailPhase,
+    #                        Policies.Retry.Phase)
+    #    flags = Flags()
 """.format(workflow_name=name, workflow_class=class_name, workflow_short_name=short_name))
     sys.stdout.write("New workflow {} has been created in {}\n".format(class_name,
                                                                        os.path.realpath(workflow_path)))
