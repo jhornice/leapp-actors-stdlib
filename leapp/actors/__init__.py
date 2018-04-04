@@ -77,6 +77,7 @@ def _is_type(value_type):
     def validate(actor, name, value):
         if not isinstance(value, value_type):
             raise WrongAttributeTypeError('Actor {} attribute {} should be of type {}'.format(actor, name, value_type))
+        return value
     return validate
 
 
@@ -89,29 +90,38 @@ def _is_tuple_of(value_type):
         if not all(map(lambda item: isinstance(item, value_type), value)):
             raise WrongAttributeTypeError(
                 'Actor {} attribute {} should contain only value of type {}'.format(actor, name, value_type))
+        return value
     return validate
 
 
 def _is_model_tuple(actor, name, value):
+    if isinstance(value, type) and issubclass(value, Model):
+        logging.getLogger("leapp.linter").warn("Actor %s field %s should be a tuple of Models", actor, name)
+        value = value,
     _is_type(tuple)(actor, name, value)
     if not all([True] + list(map(lambda item: isinstance(item, type) and issubclass(item, Model), value))):
         raise WrongAttributeTypeError(
             'Actor {} attribute {} should contain only Models'.format(actor, name))
+    return value
 
 
 def _is_tag_tuple(actor, name, value):
+    if isinstance(value, type) and issubclass(value, Tag):
+        logging.getLogger("leapp.linter").warn("Actor %s field %s should be a tuple of Tags", actor, name)
+        value = value,
     _is_type(tuple)(actor, name, value)
     if not all([True] + list(map(lambda item: isinstance(item, type) and issubclass(item, Tag), value))):
         raise WrongAttributeTypeError(
             'Actor {} attribute {} should contain only Tags'.format(actor, name))
+    return value
 
 
 def _get_attribute(actor, name, validator, required=False, default_value=None):
     value = getattr(actor, name, None)
     if not value and required:
         raise MissingActorAttributeError('Actor {} is missing attribute {}'.format(actor, name))
-    validator(actor, name, value)
-    if not value and default_value:
+    value = validator(actor, name, value)
+    if not value and default_value is not None:
         value = default_value
     return name, value
 
@@ -122,8 +132,8 @@ def get_actor_metadata(actor):
         ('path', os.path.dirname(sys.modules[actor.__module__].__file__)),
         _get_attribute(actor, 'name', _is_type(string_types), required=True),
         _get_attribute(actor, 'tags', _is_tag_tuple, required=True),
-        _get_attribute(actor, 'consumes', _is_model_tuple, required=False),
-        _get_attribute(actor, 'produces', _is_model_tuple, required=False),
+        _get_attribute(actor, 'consumes', _is_model_tuple, required=False, default_value=()),
+        _get_attribute(actor, 'produces', _is_model_tuple, required=False, default_value=()),
         _get_attribute(actor, 'description', _is_type(string_types), required=False,
                        default_value='There has been no description provided for this actor')
     ])
