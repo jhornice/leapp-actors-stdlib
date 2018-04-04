@@ -46,15 +46,15 @@
 
 ## Guidelines
 
-### Actors are written python
+### Actors are written Python
 
-Actors are written in python and should be written as such that they can run with Python 2.7 and Python 3.
+Actors are written in Python and should be written as such that they can run with Python 2.7 and Python 3.
 For this we depend on the six package to help with some of the percularities. And it can be safely imported
 on module level.
 
 ### Avoid running code on module level
 
-Actors are completely written in python code however are loaded before hand to get all information from the actor.
+Actors are completely written in Python code however are loaded before hand to get all information from the actor.
 To avoid slow downs we ask actor writers not to execute any code that is not absolutely necessary on module level.
 
 ### Avoid global non leapp imports 

@@ -1,3 +1,4 @@
+import copy
 import datetime
 import six
 
@@ -296,6 +297,9 @@ class List(Field):
         :type help: str
         """
         super(List, self).__init__(**kwargs)
+        # We do a copy of the data in default, to avoid some unwanted side effects
+        if self._default not in (missing, None):
+            self._default = copy.copy(self._default)
         if not isinstance(elem_field, Field):
             raise ModelMisuseError("elem_field must be a instance of a type derived from Field")
         self._elem_type = elem_field
